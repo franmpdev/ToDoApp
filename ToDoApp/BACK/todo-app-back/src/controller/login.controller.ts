@@ -8,16 +8,16 @@ import {
 } from '@nestjs/common';
 //IMPORTANTE IMPORTAR RESPONSE
 import { Response } from 'express';
-import { AuthService } from '../service/auth.service';
+import { UserService } from '../service/user.service';
 import { Usuario } from 'src/model/Usuario';
 
-@Controller('auth')
-export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+@Controller('login')
+export class LoginController {
+  constructor(private readonly userService: UserService) {}
 
   @Post('create')
   async create(@Body() user: Usuario, @Res() res: Response):Promise<Response> {
-    const usuariorepetido = await this.authService.create(user);
+    const usuariorepetido = await this.userService.create(user);
     if(usuariorepetido){
       return res.status(499).json(
       {
@@ -30,9 +30,9 @@ export class AuthController {
     }
   }
 
-  @Get('buscar/:nombre,:contraseña')
+  @Get(':nombre,:contraseña')
   async findOne(@Param('nombre') nombre: string, @Param('contraseña') contraseña: string, @Res() res: Response):Promise<Response> {
-    const user = await this.authService.findOne(nombre, contraseña);
+    const user = await this.userService.findOne(nombre, contraseña);
     if(user){
       return res.status(200).json(user);
     }else{

@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { AuthController } from './controller/auth.controller';
+import { LoginController } from './controller/login.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Usuario } from './model/Usuario';
-import { AuthService } from './service/auth.service';
+import { UserService } from './service/user.service';
 import { TasksController } from './controller/tasks.controller';
 import { TasksService } from './service/tasks.service';
 import { Tarea } from './model/Tarea';
@@ -21,7 +21,7 @@ import { Tarea } from './model/Tarea';
     }),
     TypeOrmModule.forFeature([Usuario, Tarea]),
   ],
-  controllers: [AuthController, TasksController],
-  providers: [AuthService, TasksService],
+  controllers: [LoginController, TasksController],
+  providers: [UserService, TasksService],
 })
 export class AppModule {}
