@@ -1,4 +1,7 @@
 -- Crear base de datos
+DROP USER 'nestuser'@'localhost';
+CREATE USER 'nestuser'@'localhost' IDENTIFIED BY 'passuser';
+GRANT ALL PRIVILEGES ON db_peluqueria_canina.* TO 'nestuser'@'localhost';
 CREATE DATABASE tasks;
 -- Usar la base de datos
 USE tasks;
