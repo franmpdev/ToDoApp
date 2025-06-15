@@ -18,9 +18,9 @@ import { Tarea } from './model/Tarea';
         database: 'tasks',
         entities: [Tarea, Usuario],
         synchronize: false,
-    }),
-    TypeOrmModule.forFeature([Usuario, Tarea]),
-  ],
+      }),
+      TypeOrmModule.forFeature([Usuario, Tarea]),
+    ],
   controllers: [LoginController, TasksController],
   providers: [UserService, TasksService],
 })

@@ -1,6 +1,12 @@
+import { AppComponent } from './app/app.component';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { App } from './app/app';
-
-bootstrapApplication(App, appConfig)
-  .catch((err) => console.error(err));
+import 'zone.js';
+import { provideHttpClient } from '@angular/common/http';
+import { routes } from './app/app.routes';
+import { provideRouter } from '@angular/router';
+bootstrapApplication(AppComponent,{
+  providers:[provideHttpClient(),
+    provideRouter(routes)
+  ]
+})
+.catch((err:any) => console.error(err));

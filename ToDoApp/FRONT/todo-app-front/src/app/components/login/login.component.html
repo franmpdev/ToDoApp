@@ -1,0 +1,16 @@
+<div class="login-container">
+  <h1>LOGIN</h1>
+  <div>
+    <label for="nombre">Introduce el nombre:</label>
+    <input type="text" id="nombre" [(ngModel)]="nombre" placeholder="Nombre">
+  </div>
+  <div>
+    <label for="contra">Introduce la contraseña:</label>
+    <input type="password" id="contra" [(ngModel)]="contra" placeholder="Contraseña">
+  </div>
+  <button class="submit-button" (click)="login()">Login</button>
+  <div class="alt-option">
+    <p>¿Aún no te has registrado?</p>
+    <button (click)="goToRegister()">Regístrate</button>
+  </div>
+</div>

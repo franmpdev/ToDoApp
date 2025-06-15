@@ -1,0 +1,16 @@
+<div class="registro-container">
+  <h1>REGISTRO</h1>
+  <div>
+    <label for="nombre">Introduce el nombre:</label>
+    <input type="text" id="nombre" [(ngModel)]="nombre" placeholder="Nombre">
+  </div>
+  <div>
+    <label for="password">Introduce la contraseña:</label>
+    <input type="password" id="password" [(ngModel)]="contrasenha" placeholder="Contraseña">
+  </div>
+  <button class="submit-button" (click)="registrarCliente()">REGISTRO</button>
+  <div class="alt-option">
+    <p>¿Ya tienes una cuenta?</p>
+    <button (click)="goToLogin()">Inicia sesión</button>
+  </div>
+</div>
