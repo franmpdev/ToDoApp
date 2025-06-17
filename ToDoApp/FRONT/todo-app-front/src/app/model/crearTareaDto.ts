@@ -1,16 +1,10 @@
-import { ApiProperty } from "@nestjs/swagger";
-
 export class CrearTareaDto {
 
-  @ApiProperty({ example: 'Limpieza'})
   titulo: string;
-  @ApiProperty({ example: "Limpiar la habitación y el salón"})
   descripcion: string;
-  @ApiProperty({ example: "2025-06-10"})
   fecha: Date;
 
   constructor(titulo?: string, descripcion?: string, fecha?: Date) {
-
     this.titulo = titulo;
     this.descripcion = descripcion;
     this.fecha = fecha;

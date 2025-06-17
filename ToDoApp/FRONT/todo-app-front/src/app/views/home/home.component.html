@@ -1,3 +1,5 @@
 
 <p>Página principal de inicio.</p>
-
+<div *ngIf="obtenerUsuario()">
+  <p>Bienvenido, {{obtenerUsuario().nombre}}!</p>
+</div>

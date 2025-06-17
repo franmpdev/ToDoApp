@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { LoginService } from '../../service/login.service';
 import { RouterModule, Router } from '@angular/router';
-import { Usuario } from '../../model/Usuario';
+import { ObtenerUsuarioDto } from '../../model/obtenerUsuarioDto';
 
 @Component({
   selector: 'app-login',
@@ -21,8 +21,7 @@ export class LoginComponent {
   login(){
     this.log.findUsu(this.nombre,this.contra).subscribe(
       {
-        next: (usuario: Usuario) => {
-          console.log('Usuario:', usuario);
+        next: (usuario: ObtenerUsuarioDto) => {
           localStorage.setItem('usuario', JSON.stringify(usuario))
           this.goToHome();
           // Aquí puedes guardar usuario o hacer redirección, etc.

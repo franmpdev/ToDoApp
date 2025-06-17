@@ -19,7 +19,7 @@ export class TasksService {
   }
   async findAllByUserId(userId: number) {
     const result = await this.tareaRepository.findBy({ usuario_id: userId })
-    return result.map(el => new ObtenerTareaDto(el.tarea_id, userId, el.titulo, el.descripcion, el.fecha))
+    return result.map(el => new ObtenerTareaDto(el.tarea_id, el.titulo, el.descripcion, el.fecha))
   }
 
 

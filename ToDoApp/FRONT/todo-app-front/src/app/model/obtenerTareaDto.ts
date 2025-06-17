@@ -1,5 +1,4 @@
 export class ObtenerTareaDto {
-  
   tarea_id: number;
   titulo: string;
   descripcion: string;
@@ -11,6 +10,7 @@ export class ObtenerTareaDto {
     this.titulo = titulo;
     this.descripcion = descripcion;
     this.fecha = fecha;
-    this.completed = completed
+    this.completed = completed;
+
   }
 }

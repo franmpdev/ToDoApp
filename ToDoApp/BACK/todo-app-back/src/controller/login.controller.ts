@@ -9,23 +9,25 @@ import {
 //IMPORTANTE IMPORTAR RESPONSE
 import { Response } from 'express';
 import { UserService } from '../service/user.service';
-import { Usuario } from 'src/model/Usuario';
+import { ObtenerUsuarioDto } from 'src/dto/obtenerUsuarioDto';
+import { CrearUsuarioDto } from 'src/dto/crearUsuarioDto';
 
 @Controller('login')
 export class LoginController {
   constructor(private readonly userService: UserService) {}
 
   @Post('create')
-  async create(@Body() user: Usuario, @Res() res: Response):Promise<Response> {
-    const usuariorepetido = await this.userService.create(user);
-    if(usuariorepetido){
+  async create(@Body() user: CrearUsuarioDto, @Res() res: Response):Promise<Response> {
+    const usuariocreado: boolean | ObtenerUsuarioDto = await this.userService.create(user);
+    if(usuariocreado instanceof ObtenerUsuarioDto){
+      return res.status(201).json({
+        usuario: usuariocreado
+      });
+
+    }else{
       return res.status(499).json(
       {
         message: 'El usuario ya existe',
-      });
-    }else{
-      return res.status(201).json({
-        message: 'Usuario creado'
       });
     }
   }

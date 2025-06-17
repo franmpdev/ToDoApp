@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import { Router } from '@angular/router';
+import { UserService } from './service/user.service';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,7 @@ import { Router } from '@angular/router';
   `]
 })
 export class AppComponent {
-  constructor(private router: Router){
+  constructor(private router: Router, private userService: UserService){
 
   }
 
@@ -27,6 +28,7 @@ export class AppComponent {
   }
   logout(): void {
     localStorage.removeItem('usuario');
+    this.userService.removeUsuario();
   }
   goToHome() {
       this.router.navigate(['/home']);

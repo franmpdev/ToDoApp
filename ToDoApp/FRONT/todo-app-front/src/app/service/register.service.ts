@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Usuario } from '../model/Usuario';
+import { ObtenerUsuarioDto } from '../model/obtenerUsuarioDto';
+import { CrearUsuarioDto } from '../model/crearUsuarioDto';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,14 +11,13 @@ import { Usuario } from '../model/Usuario';
 export class RegisterService {
 
   url:string = 'http://localhost:3000/login';
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private userService: UserService) { }
 
 
-  registrarUsuario(nombre: string, contraseña: string): Observable<Usuario | any> {
-    const nuevoUsuario = {
-      nombre,
-      contraseña
-    };
-    return this.http.post(`${this.url}/create/`, nuevoUsuario);
+  registrarUsuario(nombre: string, contraseña: string): Observable<ObtenerUsuarioDto> {
+    const fechaCreacion = new Date().toISOString().split('T')[0];
+    const nuevoUsuario = new CrearUsuarioDto(nombre, contraseña, fechaCreacion);
+    return this.http.post<ObtenerUsuarioDto>(`${this.url}/create`, nuevoUsuario);
   }
 }
+

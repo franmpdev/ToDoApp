@@ -2,8 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RegisterService } from '../../service/register.service';
-import { Usuario } from '../../model/Usuario';
 import { RouterModule, Router } from '@angular/router';
+import { UserService } from '../../service/user.service';
+import { ObtenerUsuarioDto } from '../../model/obtenerUsuarioDto';
 @Component({
   selector: 'app-register',
   imports: [FormsModule,CommonModule, RouterModule],
@@ -14,25 +15,34 @@ export class RegisterComponent {
 
   nombre: string = '';
   contrasenha: string = '';
-
-  constructor(private registerService:RegisterService,  private router: Router){}
+  mensajeError: string="";
+  constructor(private registerService:RegisterService,  private router: Router, private userService: UserService){}
 
   registrarCliente() {
-    this.registerService.registrarUsuario(
-      this.nombre,
-      this.contrasenha
-    ).subscribe({
-      next: (response: Usuario) => {
-        // Maneja el éxito (puedes mostrar un mensaje o redirigir)
-        console.log('Usuario registrado:', response);
-      },
-      error: (error) => {
-        // Maneja el error
-        console.error('Error al registrar usuario:', error);
-      }
-    });
+    this.registerService.registrarUsuario(this.nombre, this.contrasenha)
+      .subscribe({
+        next: (usuario: ObtenerUsuarioDto) => {
+          // Guardamos el usuario en UserService
+          console.log(usuario)
+          this.userService.setUsuario(usuario);
+
+          // Redirigimos a la home o donde necesites
+          this.router.navigate(['/home']);
+        },
+        error: (error) => {
+          this.mensajeError = 'El nombre introducido ya pertenece a otra cuenta.';
+        setTimeout(() => {
+          this.mensajeError = '';
+          this.nombre='';
+          this.contrasenha='';
+        }, 3000);
+        }
+      });
   }
   goToLogin() {
     this.router.navigate(['/auth/login']);
+  }
+  goToHome() {
+    this.router.navigate(['/home']);
   }
 }
