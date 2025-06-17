@@ -13,8 +13,8 @@
   <div *ngIf="isLoggedIn()">
     <button style="color:rgb(14, 110, 235);" mat-button [matMenuTriggerFor]="reservasMenu">Tareas</button>
     <mat-menu #reservasMenu="matMenu" yPosition="below">
-      <button style="color:rgb(14, 110, 235);" class="mat-menu-item" mat-menu-item>Mis Tarea</button>
-      <button style="color:rgb(14, 110, 235);" class="mat-menu-item" mat-menu-item>Nueva Tarea</button>
+      <button (click)="goToTasks()" style="color:rgb(14, 110, 235);" class="mat-menu-item" mat-menu-item>Mis Tarea</button>
+      <button (click)="goToCreateTask()" style="color:rgb(14, 110, 235);" class="mat-menu-item" mat-menu-item>Nueva Tarea</button>
     </mat-menu>
   </div>
   <div>

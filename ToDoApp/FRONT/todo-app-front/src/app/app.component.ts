@@ -39,6 +39,12 @@ export class AppComponent {
   goToRegister() {
       this.router.navigate(['/auth/register']);
   }
+  goToTasks(){
+    this.router.navigate(['tasks'])
+  }
+  goToCreateTask(){
+    this.router.navigate(['createTask'])
+  }
 
 
 }
