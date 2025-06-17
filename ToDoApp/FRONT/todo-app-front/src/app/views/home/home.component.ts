@@ -17,7 +17,10 @@ export class HomeComponent {
   }
 
   ngOnInit() {
-    this.usuario = JSON.parse(localStorage.getItem('usuario'));
+    let usuario = JSON.parse(localStorage.getItem('usuario'));
+    if(this.userService.getUsuario()== null){
+      this.userService.setUsuario(usuario);
+    }
   }
   obtenerUsuario(): ObtenerUsuarioDto{
     return this.userService.getUsuario();

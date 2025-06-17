@@ -12,13 +12,7 @@ export class LoginService {
   constructor(private http:HttpClient, private userService: UserService) { }
 
 
-  findUsu(nombre:string,contra:string):Observable<ObtenerUsuarioDto>{
-    const usuario = this.http.get<ObtenerUsuarioDto>(`${this.url}/${nombre},${contra}`);
-    usuario.subscribe(usuario => {
-      this.userService.setUsuario(usuario);
-
-    })
-    return usuario;
-
+  findUsu(nombre:string,contra:string):Observable<any>{
+    return this.http.get<ObtenerUsuarioDto>(`${this.url}/${nombre},${contra}`);
   }
 }

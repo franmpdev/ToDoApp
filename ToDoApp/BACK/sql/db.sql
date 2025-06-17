@@ -1,9 +1,11 @@
 -- Crear base de datos
+DROP DATABASE IF EXISTS tasks;
+CREATE DATABASE tasks;
+-- Usuario
 DROP USER 'nestuser'@'localhost';
 CREATE USER 'nestuser'@'localhost' IDENTIFIED BY 'passuser';
 GRANT ALL PRIVILEGES ON tasks.* TO 'nestuser'@'localhost';
-DROP DATABASE IF EXISTS tasks;
-CREATE DATABASE tasks;
+
 -- Usar la base de datos
 USE tasks;
 
@@ -21,12 +23,6 @@ CREATE TABLE tareas (
   titulo VARCHAR(255) NOT NULL,
   descripcion VARCHAR(255),
   fecha DATE,
-  completed BOOLEAN DEFAULT false,
   usuario_id INT,
   FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id)
 );
-
--- Insertar usuarios de ejemplo
-
-
--- Insertar tareas de ejemplo

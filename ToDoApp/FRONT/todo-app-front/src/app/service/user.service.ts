@@ -6,7 +6,7 @@ import { ObtenerUsuarioDto } from '../model/obtenerUsuarioDto';
 })
 export class UserService {
 
-  private usuario: ObtenerUsuarioDto = null;
+  usuario: any = null;
 
   constructor() {}
 
@@ -15,7 +15,12 @@ export class UserService {
   }
 
   getUsuario(): ObtenerUsuarioDto | null {
-    return this.usuario
+    if(!!this.usuario){
+      return this.usuario;
+    }
+    else{
+      return null;
+    }
   }
   removeUsuario():void{
     this.usuario = null;

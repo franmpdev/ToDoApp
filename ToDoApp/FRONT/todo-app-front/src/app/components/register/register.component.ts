@@ -22,8 +22,10 @@ export class RegisterComponent {
     this.registerService.registrarUsuario(this.nombre, this.contrasenha)
       .subscribe({
         next: (usuario: ObtenerUsuarioDto) => {
+
           // Guardamos el usuario en UserService
           console.log(usuario)
+          localStorage.setItem('usuario', JSON.stringify(usuario))
           this.userService.setUsuario(usuario);
 
           // Redirigimos a la home o donde necesites

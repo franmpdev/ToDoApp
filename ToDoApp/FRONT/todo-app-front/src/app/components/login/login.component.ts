@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { LoginService } from '../../service/login.service';
 import { RouterModule, Router } from '@angular/router';
+import { UserService } from '../../service/user.service';
 import { ObtenerUsuarioDto } from '../../model/obtenerUsuarioDto';
 
 @Component({
@@ -16,15 +17,18 @@ export class LoginComponent {
   nombre:string;
   contra:string;
 
-  constructor(private log :LoginService, private router: Router){}
+  constructor(private log :LoginService, private router: Router, private userService: UserService){}
 
   login(){
-    this.log.findUsu(this.nombre,this.contra).subscribe(
-      {
+    this.log.findUsu(this.nombre,this.contra)
+      .subscribe({
         next: (usuario: ObtenerUsuarioDto) => {
-          localStorage.setItem('usuario', JSON.stringify(usuario))
-          this.goToHome();
-          // Aquí puedes guardar usuario o hacer redirección, etc.
+          console.log(usuario)
+          localStorage.setItem('usuario', JSON.stringify(usuario));
+          this.userService.setUsuario(usuario);
+
+          //Redirigir al home
+          this.router.navigate(['/home']);
         },
         error: (err) => {
           console.error('Error en login', err);

@@ -20,9 +20,7 @@ export class LoginController {
   async create(@Body() user: CrearUsuarioDto, @Res() res: Response):Promise<Response> {
     const usuariocreado: boolean | ObtenerUsuarioDto = await this.userService.create(user);
     if(usuariocreado instanceof ObtenerUsuarioDto){
-      return res.status(201).json({
-        usuario: usuariocreado
-      });
+      return res.status(201).json(usuariocreado);
 
     }else{
       return res.status(499).json(

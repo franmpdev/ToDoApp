@@ -1,5 +1,27 @@
+<div class="home-container" *ngIf="obtenerUsuario();else notLoggedIn">
+  <div >
+    <h1>¡Bienvenido, {{this.obtenerUsuario().nombre }}!</h1>
 
-<p>Página principal de inicio.</p>
-<div *ngIf="obtenerUsuario()">
-  <p>Bienvenido, {{obtenerUsuario().nombre}}!</p>
+    <p class="welcome-message">
+        Nos alegra tenerte de vuelta. Aquí puedes gestionar tus tareas diarias y mantenerte organizado.
+    </p>
+
+    <div class="task-summary">
+      <h2>Resumen de tus tareas</h2>
+      <ul>
+          <!--
+            <li>Total de tareas: {{ taskStats.total }}</li>
+            <li>Tareas completadas: {{ taskStats.completed }}</li>
+            <li>Tareas pendientes: {{ taskStats.pending }}</li>
+          -->
+
+      </ul>
+    </div>
+  </div>
+
+
 </div>
+<ng-template #notLoggedIn class="home-container">
+  <p>Por favor, inicia sesión para ver tus tareas.</p>
+</ng-template>
+
