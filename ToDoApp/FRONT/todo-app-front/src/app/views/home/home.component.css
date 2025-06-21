@@ -8,6 +8,23 @@
   text-align: center;
   font-style: normal;
 }
+.home-container button {
+  background: #6366f1;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 22px;
+  margin: 18px 8px 0 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(99,102,241,0.08);
+}
+
+.home-container button:hover {
+  background: #4f46e5;
+}
 
 .welcome-section h1 {
   color: #4f46e5;

@@ -28,6 +28,7 @@ export class AppComponent {
   logout(): void {
     localStorage.removeItem('usuario');
     this.userService.removeUsuario();
+    this.goToHome()
   }
   goToHome() {
       this.router.navigate(['/home']);
@@ -44,6 +45,7 @@ export class AppComponent {
   goToCreateTask(){
     this.router.navigate(['createTask'])
   }
+
 
 
 }

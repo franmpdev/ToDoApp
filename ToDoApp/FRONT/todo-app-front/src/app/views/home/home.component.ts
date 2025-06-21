@@ -50,4 +50,7 @@ export class HomeComponent {
   goToMisTareas() {
     this.router.navigate(['tasks']);
   }
+  goToLogin(){
+    this.router.navigate(['/auth/login']);
+  }
 }
