@@ -31,9 +31,9 @@ La interfaz de ToDoApp está pensada para ser clara, intuitiva y elegante:
 ## 👨‍💻 Autor
 
 Desarrollado por Fran1  
-- Email: fran1@example.com  
-- GitHub: [github.com/fran1](https://github.com/fran1)  
-- LinkedIn: [linkedin.com/in/fran1](https://linkedin.com/in/fran1)
+- Email: franmorenopecofmp@gmail.com  
+- GitHub: [github.com/fran1](https://github.com/franmpdev)  
+- LinkedIn: [linkedin.com/in/fran1](https://linkedin.com/in/francisco-javier-moreno-peco)
 
 ---
 
