@@ -15,11 +15,13 @@ export class UserService {
   }
 
   getUsuario(): ObtenerUsuarioDto | null {
+
     if(!!this.usuario){
       return this.usuario;
     }
     else{
-      return null;
+      this.usuario = JSON.parse(localStorage.getItem('usuario'))
+      return this.usuario;
     }
   }
   removeUsuario():void{

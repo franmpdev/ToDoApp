@@ -22,7 +22,6 @@ export class AppComponent {
   constructor(private router: Router, private userService: UserService){
 
   }
-
   isLoggedIn(): boolean {
     return !!localStorage.getItem('usuario');
   }

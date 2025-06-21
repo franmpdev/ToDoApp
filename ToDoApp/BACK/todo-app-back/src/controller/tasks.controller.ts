@@ -6,11 +6,12 @@ import {
   Param,
   Post,
   Put,
+  Res,
 
 } from '@nestjs/common';
+import { Response } from 'express';
 import { CrearTareaDto } from 'src/dto/crearTareaDto';
 import { TasksService } from 'src/service/tasks.service';
-
 @Controller('tasks')
 export class TasksController {
   constructor(private readonly tasksService: TasksService) {}
@@ -18,17 +19,22 @@ export class TasksController {
 
 
 
-
+  @Get('/allTasks')
+  findAll(@Res() res: Response) {
+    return res.status(200).json(this.tasksService.findAll());
+  }
   @Get('findByUserId/:id')
   findOne(@Param('id') id: number) {
     return this.tasksService.findAllByUserId(id);
   }
   
   @Post('create')
-  async createNewTask(@Body() crearTareaDto: CrearTareaDto) {
+  async createNewTask(@Body() crearTareaDto: CrearTareaDto, @Res() res: Response) {
     const creado = await this.tasksService.createTask(crearTareaDto)
     if(creado){
-      return crearTareaDto;
+      return res.status(201).json(creado);
+    }else{  
+      return res.status(404)
     }
   }
   @Put(':id')

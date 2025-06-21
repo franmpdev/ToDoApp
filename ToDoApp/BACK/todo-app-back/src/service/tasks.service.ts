@@ -11,7 +11,15 @@ export class TasksService {
   
   constructor(@InjectRepository(Tarea) private tareaRepository:Repository<Tarea>){}
 
-
+  async findAll(): Promise<ObtenerTareaDto[]> {
+    const tareas = await this.tareaRepository.find();
+    return tareas.map(tarea => new ObtenerTareaDto(
+      tarea.tarea_id,
+      tarea.titulo,
+      tarea.descripcion,
+      tarea.fecha
+    ));
+  }
   async createTask(crearTareaDto: CrearTareaDto): Promise<boolean> {
     const nuevaTarea = this.tareaRepository.create(crearTareaDto);
     await this.tareaRepository.save(nuevaTarea);

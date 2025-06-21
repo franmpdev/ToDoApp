@@ -1,0 +1,136 @@
+.tareas-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tarea-card, form {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 22px auto;
+  background: #f9fafb;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(99,102,241,0.08);
+  padding: 20px 24px;
+  transition: box-shadow 0.2s;
+}
+
+.tarea-card:hover {
+  box-shadow: 0 4px 18px rgba(99,102,241,0.15);
+}
+
+.tarea-card h3 {
+  margin: 0 0 8px 0;
+  color: #4f46e5;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.tarea-card p {
+  margin: 4px 0;
+  color: #333;
+  text-align: center;
+}
+
+form {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(99,102,241,0.06);
+}
+
+input[type="text"],
+input[type="date"],
+textarea {
+  width: 90%;
+  max-width: 320px;
+  display: block;
+  margin: 0 auto 12px auto;
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #f3f4f6;
+  transition: border 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+textarea:focus {
+  border-color: #6366f1;
+  outline: none;
+  background: #fff;
+}
+
+.form-btns {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+button {
+  background: #6366f1;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button[type="button"] {
+  background: #e5e7eb;
+  color: #333;
+}
+
+button.cancelar-btn {
+  background: #ef4444;
+  color: #fff;
+}
+
+button:hover {
+  background: #4f46e5;
+  color: #fff;
+}
+
+button.cancelar-btn:hover {
+  background: #dc2626;
+  color: #fff;
+}
+
+.tick-btn {
+  border: none;
+  background: #e5e7eb;
+  color: #888;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background 0.2s, color 0.2s;
+  vertical-align: middle;
+  outline: none;
+}
+
+.tick-btn.hecha {
+  background: #6a5cee;
+  color: #fff;
+}
+
+.tick-btn.no-hecha {
+  background: #e5e7eb;
+  color: #888;
+}
+
+.tick-btn:active {
+  transform: scale(0.95);
+}
+
+.tarea-card .editar-btn {
+  display: block;
+  margin: 16px auto 0 auto;
+}

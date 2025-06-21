@@ -1,27 +1,46 @@
-<div class="home-container" *ngIf="obtenerUsuario();else notLoggedIn">
-  <div >
-    <h1>¡Bienvenido, {{this.obtenerUsuario().nombre }}!</h1>
-
+<div class="home-container" *ngIf="obtenerUsuario(); else notLoggedIn">
+  <div class="welcome-section">
+    <h1>¡Bienvenido, {{ obtenerUsuario().nombre }}!</h1>
     <p class="welcome-message">
-        Nos alegra tenerte de vuelta. Aquí puedes gestionar tus tareas diarias y mantenerte organizado.
+      Nos alegra tenerte de vuelta. Aquí puedes gestionar tus tareas diarias y mantenerte organizado.
     </p>
-
-    <div class="task-summary">
-      <h2>Resumen de tus tareas</h2>
-      <ul>
-          <!--
-            <li>Total de tareas: {{ taskStats.total }}</li>
-            <li>Tareas completadas: {{ taskStats.completed }}</li>
-            <li>Tareas pendientes: {{ taskStats.pending }}</li>
-          -->
-
-      </ul>
-    </div>
   </div>
 
+  <div class="project-description">
+    <h2>Sobre ToDoApp</h2>
+    <p>
+      ToDoApp es una aplicación desarrollada para ayudarte a organizar tus tareas diarias de forma sencilla y eficiente. Puedes crear, editar y marcar como completadas tus tareas, así como mantener un registro de tus pendientes desde cualquier dispositivo.
+    </p>
+  </div>
 
+  <div class="quick-actions">
+    <h2>Acciones rápidas</h2>
+    <button (click)="goToNuevaTarea()">➕ Nueva tarea</button>
+    <button (click)="goToMisTareas()">📋 Ver mis tareas</button>
+  </div>
+
+  <div class="tips-section">
+    <h3>Consejo del día</h3>
+    <blockquote>
+      "La clave para la productividad es empezar por lo más importante."
+    </blockquote>
+  </div>
+
+  <div class="contact-section">
+    <h2>Contacto</h2>
+    <p>¿Tienes dudas, sugerencias o quieres colaborar? ¡Contáctame!</p>
+    <ul class="contact-list">
+      <li>Email: <a href="mailto:fran1@example.com">franmorenopecofmp&commat;gmail.com</a></li>
+      <li>GitHub: <a href="https://github.com/franmpdev" target="_blank">github.com/fran1</a></li>
+      <li>LinkedIn: <a href="https://www.linkedin.com/in/francisco-javier-moreno-peco" target="_blank">linkedin.com/in/fran1</a></li>
+    </ul>
+  </div>
 </div>
-<ng-template #notLoggedIn class="home-container">
-  <p>Por favor, inicia sesión para ver tus tareas.</p>
-</ng-template>
 
+<ng-template #notLoggedIn>
+  <div class="home-container">
+    <h1>Bienvenido a ToDoApp</h1>
+    <p>Por favor, inicia sesión para ver y gestionar tus tareas.</p>
+    <button routerLink="/login">Iniciar sesión</button>
+  </div>
+</ng-template>

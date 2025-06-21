@@ -1,1 +1,34 @@
-<p>mis-tareas works!</p>
+<div class="tareas-container">
+  <div *ngFor="let tarea of tasks">
+    <div *ngIf="editandoId !== tarea.tarea_id; else editarForm" class="tarea-card">
+      <h3>{{ tarea.titulo }}</h3>
+      <p>{{ tarea.descripcion }}</p>
+      <p><strong>Fecha límite:</strong> {{ tarea.fecha | date }}</p>
+      <p>
+        <button type="button"
+                class="tick-btn"
+                [ngClass]="{'hecha': tarea.completed, 'no-hecha': !tarea.completed}"
+                (click)="toggleCompletada(tarea)">
+          ✓
+        </button>
+        <span [ngClass]="{'completada': tarea.completed}">{{ tarea.completed ? 'Hecha' : 'Pendiente' }}</span>
+      </p>
+      <button class="editar-btn" (click)="editarTarea(tarea)">Editar</button>
+    </div>
+    <ng-template #editarForm>
+      <form (ngSubmit)="guardarEdicion()">
+        <input type="text" [(ngModel)]="tareaEdit.titulo" name="titulo" required>
+        <textarea [(ngModel)]="tareaEdit.descripcion" name="descripcion"></textarea>
+        <input type="date" [(ngModel)]="tareaEdit.fecha" name="fecha">
+        <label style="display:block; margin: 0 auto 12px auto; width:90%; max-width:320px;">
+          <input type="checkbox" [(ngModel)]="tareaEdit.completed" name="completed">
+          Marcar como hecha
+        </label>
+        <div class="form-btns">
+          <button type="submit">Guardar</button>
+          <button type="button" class="cancelar-btn" (click)="cancelarEdicion()">Cancelar</button>
+        </div>
+      </form>
+    </ng-template>
+  </div>
+</div>
